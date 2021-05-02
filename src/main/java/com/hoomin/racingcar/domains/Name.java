@@ -3,7 +3,7 @@ package com.hoomin.racingcar.domains;
 public class Name {
 	private static final int MAX_SIZE = 5;
 
-	private String name;
+	private final String name;
 
 	public Name(String name) {
 		if (name == null || name.length() > MAX_SIZE) {
