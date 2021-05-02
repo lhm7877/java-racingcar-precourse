@@ -8,3 +8,6 @@
     - 값이 3이하이면 상태 유지
 - 모든 Round 종료 후 우승자를 출력한다.
     - 우승자는 1명 이상이다.
+  
+### 테스트 메소드명 규칙
+- MethodName_StateUnderTest_ExpectedBehavior
