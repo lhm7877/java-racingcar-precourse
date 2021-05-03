@@ -23,7 +23,7 @@ public class CarsTest {
 	}
 
 	private Car createMovedCar(String name, List<Number> numbers) {
-		final Car car = new Car(name);
+		final Car car = new Car(new Name(name));
 		for (Number number : numbers) {
 			car.race(number);
 		}

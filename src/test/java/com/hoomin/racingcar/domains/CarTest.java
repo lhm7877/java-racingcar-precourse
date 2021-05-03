@@ -12,7 +12,7 @@ public class CarTest {
 	@DisplayName("Car 생성_6글자 이상의 이름_IllegalArgumentException")
 	@ValueSource(strings = {"6words", "abcdefg"})
 	public void newCar_InvalidName_IllegalArgumentException(String name) {
-		assertThatThrownBy(() -> new Car(name))
+		assertThatThrownBy(() -> new Car(new Name(name)))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
@@ -20,7 +20,7 @@ public class CarTest {
 	@DisplayName("Car 생성_1~5 글자의 이름_CreateInstance")
 	@ValueSource(strings = {"pobi", "crong", "honux"})
 	public void newCar_ValidName_CreateInstance(String name) {
-		assertThat(new Car(name))
+		assertThat(new Car(new Name(name)))
 			.isInstanceOf(Car.class);
 	}
 
@@ -30,7 +30,7 @@ public class CarTest {
 	@ValueSource(ints = {4,5,6,7,8,9})
 	public void race_NumberMoreThanOrEqualTo4_Move(int integer) {
 		final Number number = new Number(integer);
-		final Car car = new Car("pobi");
+		final Car car = new Car(new Name("pobi"));
 		car.race(number);
 		assertThat(car.getPosition()).isEqualTo(1);
 	}
@@ -40,7 +40,7 @@ public class CarTest {
 	@ValueSource(ints = {0,1,2,3})
 	public void race_NumberMoreThanOrEqualTo4_NotMove(int integer) {
 		final Number number = new Number(integer);
-		final Car car = new Car("pobi");
+		final Car car = new Car(new Name("pobi"));
 		car.race(number);
 		assertThat(car.getPosition()).isEqualTo(0);
 	}
