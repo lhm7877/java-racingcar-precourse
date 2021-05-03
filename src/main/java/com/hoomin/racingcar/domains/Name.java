@@ -11,4 +11,13 @@ public class Name {
 		}
 		this.name = name;
 	}
+
+	public String get() {
+		return name;
+	}
+
+	@Override
+	public String toString() {
+		return name;
+	}
 }

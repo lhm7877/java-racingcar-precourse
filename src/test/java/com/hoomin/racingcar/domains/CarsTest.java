@@ -19,7 +19,7 @@ public class CarsTest {
 		final Car hooCar = createMovedCar(name, Arrays.asList(new Number(firstNumber), new Number(secondNumber)));
 		final Car minCar = createMovedCar(name, Arrays.asList(new Number(firstNumber), new Number(secondNumber)));
 		final Cars cars = new Cars(Arrays.asList(pobiCar, hooCar, minCar));
-		assertThat(cars.getWinner()).isEqualTo(pobiCar);
+		assertThat(cars.getWinners().get(0)).isEqualTo(pobiCar);
 	}
 
 	private Car createMovedCar(String name, List<Number> numbers) {

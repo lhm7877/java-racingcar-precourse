@@ -1,5 +1,7 @@
 package com.hoomin.racingcar.domains;
 
+import java.util.Optional;
+
 public class Car {
 	public static final int MOVE_CONDITION_BASE_NUMBER = 4;
 
@@ -13,15 +15,27 @@ public class Car {
 
 	public void race(Number number) {
 		if (number.get() >= MOVE_CONDITION_BASE_NUMBER) {
-			this.position.movePosition();
+			this.position.move();
 		}
 	}
 
-	public Integer getPosition() {
-		return position.getPosition();
+	public Position getPosition() {
+		return position;
 	}
 
-	public void print() {
+	public Name getName() {
+		return name;
+	}
 
+	public Optional<Car> getNameByPosition(Position position) {
+		if (this.position.equals(position)) {
+			return Optional.of(this);
+		}
+		return Optional.empty();
+	}
+
+	@Override
+	public String toString() {
+		return name + " : " + position;
 	}
 }

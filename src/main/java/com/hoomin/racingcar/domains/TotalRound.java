@@ -10,4 +10,9 @@ public class TotalRound {
 	public int get() {
 		return totalRound;
 	}
+
+	@Override
+	public String toString() {
+		return String.valueOf(totalRound);
+	}
 }

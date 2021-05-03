@@ -7,9 +7,9 @@ import com.hoomin.racingcar.domains.Car;
 import com.hoomin.racingcar.domains.Cars;
 import com.hoomin.racingcar.domains.Name;
 import com.hoomin.racingcar.domains.Racing;
-import com.hoomin.racingcar.domains.RacingResult;
 import com.hoomin.racingcar.domains.TotalRound;
 import com.hoomin.racingcar.view.InputView;
+import com.hoomin.racingcar.view.OutputView;
 
 /**
  * Cars를 만들고 racing을 시작하며 result를 print하는 Game에 대한 책임
@@ -20,8 +20,9 @@ public class RacingCarGame {
 		final List<String> carNames = InputView.getCarNames();
 		Cars cars = new Cars(createCarsByCarNames(carNames));
 		Racing racing = new Racing(cars, getTotalRound());
-		final RacingResult racingResult = racing.start();
-		racingResult.print();
+		Cars winnerCars = racing.start();
+		final List<Name> names = winnerCars.getNames();
+		OutputView.printWinners(names);
 	}
 
 	private List<Car> createCarsByCarNames(List<String> carNames) {
