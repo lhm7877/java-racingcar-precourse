@@ -43,13 +43,17 @@ public class Cars {
 	}
 
 	public Cars getWinners() {
-		final Position winnerPosition = Collections.max(this.cars, Comparator.comparing(car -> car.getPosition().get())).getPosition();
+		final Position winnerPosition = getWinnerPosition();
 		List<Car> cars = new ArrayList<>();
 		for (Car car : this.cars) {
 			car.getNameByPosition(winnerPosition)
 				.ifPresent(cars::add);
 		}
 		return new Cars(cars);
+	}
+
+	private Position getWinnerPosition() {
+		return Collections.max(this.cars, Comparator.comparing(car -> car.getPosition().get())).getPosition();
 	}
 
 	public List<Name> getNames() {
