@@ -15,11 +15,27 @@ public class Cars {
 		this.cars = cars;
 	}
 
+	public static Cars fromCarNames(List<String> carNames) {
+		return new Cars(createCarsByCarNames(carNames));
+	}
+
+	/**
+	 * return carNames.stream().map(Car::new).collect(Collectors.toList());
+	 */
+	private static List<Car> createCarsByCarNames(List<String> carNames) {
+		List<Car> cars = new ArrayList<>();
+		for (String carName : carNames) {
+			final Car car = new Car(carName);
+			cars.add(car);
+		}
+		return cars;
+	}
+
 	public Car get(Integer index) {
 		return cars.get(index);
 	}
 
-	void race() {
+	public void race() {
 		for (Car car : cars) {
 			car.race(RandomNumberGenerator.generateZeroToNine());
 			OutputView.printCar(car);

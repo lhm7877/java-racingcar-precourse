@@ -6,9 +6,9 @@ public class Racing {
 	private final Cars cars;
 	private final TotalRound totalRound;
 
-	public Racing(Cars cars, TotalRound totalRound) {
+	public Racing(Cars cars, Integer totalRound) {
 		this.cars = cars;
-		this.totalRound = totalRound;
+		this.totalRound = new TotalRound(totalRound);
 	}
 
 	public Cars start() {

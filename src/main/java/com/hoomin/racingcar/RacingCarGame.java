@@ -1,13 +1,10 @@
 package com.hoomin.racingcar;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.hoomin.racingcar.domains.Car;
 import com.hoomin.racingcar.domains.Cars;
 import com.hoomin.racingcar.domains.Name;
 import com.hoomin.racingcar.domains.Racing;
-import com.hoomin.racingcar.domains.TotalRound;
 import com.hoomin.racingcar.view.InputView;
 import com.hoomin.racingcar.view.OutputView;
 
@@ -18,24 +15,14 @@ import com.hoomin.racingcar.view.OutputView;
 public class RacingCarGame {
 	public void start() {
 		final List<String> carNames = InputView.getCarNames();
-		Cars cars = new Cars(createCarsByCarNames(carNames));
+		Cars cars = Cars.fromCarNames(carNames);
 		Racing racing = new Racing(cars, getTotalRound());
 		Cars winnerCars = racing.start();
 		final List<Name> names = winnerCars.getNames();
 		OutputView.printWinners(names);
 	}
 
-	private List<Car> createCarsByCarNames(List<String> carNames) {
-		List<Car> cars = new ArrayList<>();
-		for (String carName : carNames) {
-			final Name name = new Name(carName);
-			final Car car = new Car(name);
-			cars.add(car);
-		}
-		return cars;
-	}
-
-	private TotalRound getTotalRound() {
-		return new TotalRound(InputView.getTotalRound());
+	private Integer getTotalRound() {
+		return InputView.getTotalRound();
 	}
 }
